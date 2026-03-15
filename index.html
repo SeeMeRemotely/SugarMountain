@@ -119,6 +119,10 @@
       cursor:pointer;
       transition:.2s ease;
       box-shadow:0 6px 18px rgba(0,0,0,.08);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
     }
 
     .btn-primary{
@@ -264,6 +268,46 @@
       line-height:1.25;
     }
 
+    .qr-wrap{
+      margin-top:18px;
+      padding-top:18px;
+      border-top:1px solid var(--line);
+      display:grid;
+      grid-template-columns:120px 1fr;
+      gap:16px;
+      align-items:center;
+    }
+
+    .qr-link{
+      display:block;
+      width:120px;
+      height:120px;
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow:0 6px 18px rgba(0,0,0,.06);
+      flex:0 0 auto;
+    }
+
+    .qr-link img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .qr-meta h4{
+      margin:0 0 6px;
+      font-size:17px;
+    }
+
+    .qr-meta p{
+      margin:0 0 10px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.45;
+    }
+
     .highlight-band{
       margin-top:22px;
       background:linear-gradient(135deg,#405841,#5d744d);
@@ -315,14 +359,90 @@
       font-size:15px;
     }
 
-    .mini-gallery{
-      display:grid;
-      grid-template-columns:repeat(2, 1fr);
-      gap:12px;
+    .carousel{
+      position:relative;
+      overflow:hidden;
+      border-radius:18px;
+      background:#eee;
+      box-shadow:var(--shadow);
     }
 
-    .mini-gallery .shot{
+    .carousel-track{
+      display:flex;
+      transition:transform .4s ease;
+      will-change:transform;
+    }
+
+    .carousel-slide{
+      min-width:100%;
+      position:relative;
       aspect-ratio: 4 / 3;
+      cursor:pointer;
+    }
+
+    .carousel-slide img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .carousel-caption{
+      position:absolute;
+      left:14px;
+      right:14px;
+      bottom:14px;
+      padding:10px 12px;
+      border-radius:12px;
+      background:rgba(0,0,0,.48);
+      color:#fff;
+      font-size:13px;
+      line-height:1.25;
+      backdrop-filter:blur(6px);
+    }
+
+    .carousel-btn{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      width:42px;
+      height:42px;
+      border:none;
+      border-radius:50%;
+      background:rgba(255,255,255,.9);
+      box-shadow:0 6px 20px rgba(0,0,0,.15);
+      cursor:pointer;
+      font-size:20px;
+      line-height:1;
+      z-index:2;
+    }
+
+    .carousel-btn:hover{
+      background:#fff;
+    }
+
+    .carousel-btn.prev{ left:12px; }
+    .carousel-btn.next{ right:12px; }
+
+    .carousel-dots{
+      display:flex;
+      gap:8px;
+      justify-content:center;
+      padding:14px 10px 0;
+      flex-wrap:wrap;
+    }
+
+    .carousel-dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      border:none;
+      background:#c6beb1;
+      cursor:pointer;
+      padding:0;
+    }
+
+    .carousel-dot.active{
+      background:var(--accent);
     }
 
     .gallery-section{
@@ -382,21 +502,6 @@
       font-size:13px;
       line-height:1.25;
       backdrop-filter: blur(6px);
-    }
-
-    .footer-note{
-      margin-top:28px;
-      background:#fff;
-      border-radius:20px;
-      padding:20px 22px;
-      border:1px solid var(--line);
-      box-shadow:var(--shadow);
-      color:var(--muted);
-      font-size:14px;
-    }
-
-    .footer-note strong{
-      color:#222;
     }
 
     .lightbox{
@@ -520,16 +625,26 @@
         grid-template-columns:1fr;
       }
 
-      .mini-gallery{
-        grid-template-columns:1fr;
-      }
-
       .gallery{
         grid-template-columns:1fr;
       }
 
       .shot{
         min-height:240px;
+      }
+
+      .qr-wrap{
+        grid-template-columns:1fr;
+      }
+
+      .qr-link{
+        width:140px;
+        height:140px;
+      }
+
+      .carousel-btn{
+        width:38px;
+        height:38px;
       }
     }
 
@@ -540,7 +655,9 @@
 
       .topbar,
       .btn,
-      .lightbox{
+      .lightbox,
+      .carousel-btn,
+      .carousel-dots{
         display:none !important;
       }
 
@@ -553,7 +670,7 @@
       .card,
       .highlight-band,
       .shot,
-      .footer-note{
+      .carousel{
         box-shadow:none;
       }
 
@@ -575,8 +692,7 @@
       }
 
       .card,
-      .highlight-band,
-      .footer-note{
+      .highlight-band{
         border:1px solid #ddd;
       }
     }
@@ -670,6 +786,19 @@
             <div class="fact-value">Private • Quiet • Comfortable</div>
           </div>
         </div>
+
+        <div class="qr-wrap">
+          <a class="qr-link" href="https://www.zillow.com/" target="_blank" rel="noopener noreferrer" title="Open Zillow listing">
+            <img src="zillow-qr-placeholder.png" alt="Zillow QR code placeholder" />
+          </a>
+          <div class="qr-meta">
+            <h4>Zillow Listing</h4>
+            <p>
+              Replace the placeholder QR image and Zillow link with the live property URL when ready.
+            </p>
+            <a class="btn btn-primary" href="https://www.zillow.com/" target="_blank" rel="noopener noreferrer">Open Zillow Listing</a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -704,15 +833,39 @@
 
       <div class="card pad">
         <h3 class="section-title">Featured Views</h3>
-        <div class="mini-gallery">
-          <div class="shot" onclick="openLightbox('BirdsEye4.jpg','Aerial view of the surrounding valley and setting')">
-            <img src="BirdsEye4.jpg" alt="Aerial mountain and valley view" />
-            <div class="cap">Valley and ridge views</div>
+
+        <div class="carousel" id="featuredCarousel">
+          <button class="carousel-btn prev" type="button" onclick="moveCarousel(-1)">‹</button>
+          <button class="carousel-btn next" type="button" onclick="moveCarousel(1)">›</button>
+
+          <div class="carousel-track" id="carouselTrack">
+            <div class="carousel-slide" onclick="openLightbox('BirdsEye4.jpg','Aerial view of the surrounding valley and setting')">
+              <img src="BirdsEye4.jpg" alt="Aerial valley and ridge view" />
+              <div class="carousel-caption">Valley and ridge views</div>
+            </div>
+
+            <div class="carousel-slide" onclick="openLightbox('GuestHouseAndGarden.jpg','Guest house, greenhouse, and fenced garden area')">
+              <img src="GuestHouseAndGarden.jpg" alt="Guest house and garden area" />
+              <div class="carousel-caption">Guest house + garden area</div>
+            </div>
+
+            <div class="carousel-slide" onclick="openLightbox('BirdsEye2.jpg','Aerial showing the broader property setting')">
+              <img src="BirdsEye2.jpg" alt="Aerial property setting" />
+              <div class="carousel-caption">Broader property setting</div>
+            </div>
+
+            <div class="carousel-slide" onclick="openLightbox('FirePit.jpg','Fire pit near the creek and outdoor gathering area')">
+              <img src="FirePit.jpg" alt="Fire pit area" />
+              <div class="carousel-caption">Fire pit near the creek</div>
+            </div>
           </div>
-          <div class="shot" onclick="openLightbox('GuestHouseAndGarden.jpg','Guest house, greenhouse, and fenced garden area')">
-            <img src="GuestHouseAndGarden.jpg" alt="Guest house and garden area" />
-            <div class="cap">Guest house + garden area</div>
-          </div>
+        </div>
+
+        <div class="carousel-dots" id="carouselDots">
+          <button class="carousel-dot active" type="button" onclick="goToCarousel(0)"></button>
+          <button class="carousel-dot" type="button" onclick="goToCarousel(1)"></button>
+          <button class="carousel-dot" type="button" onclick="goToCarousel(2)"></button>
+          <button class="carousel-dot" type="button" onclick="goToCarousel(3)"></button>
         </div>
       </div>
     </section>
@@ -855,10 +1008,6 @@
       </div>
     </section>
 
-    <div class="footer-note">
-      <strong>Recommendation:</strong> once the public listing is live, add a QR code and agent contact block near the top. That turns this page into both a web flyer and a clean printable PDF handout without having to maintain two separate versions.
-    </div>
-
   </main>
 
   <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
@@ -893,6 +1042,34 @@
         forceCloseLightbox();
       }
     });
+
+    let currentSlide = 0;
+    const track = document.getElementById('carouselTrack');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const totalSlides = dots.length;
+
+    function updateCarousel(){
+      track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+    }
+
+    function moveCarousel(direction){
+      currentSlide += direction;
+      if(currentSlide < 0) currentSlide = totalSlides - 1;
+      if(currentSlide >= totalSlides) currentSlide = 0;
+      updateCarousel();
+    }
+
+    function goToCarousel(index){
+      currentSlide = index;
+      updateCarousel();
+    }
+
+    setInterval(function(){
+      moveCarousel(1);
+    }, 5000);
   </script>
 
 </body>
