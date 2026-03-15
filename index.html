@@ -1,144 +1,899 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Sugar Mountain Property</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <title>Sugar Mountain</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<style>
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    margin:0;
-    background:#f5f5f5;
-    color:#222;
-}
-
-.container{
-    max-width:1100px;
-    margin:auto;
-    background:white;
-    padding:30px;
-}
-
-.hero img{
-    width:100%;
-    border-radius:6px;
-}
-
-h1{
-    margin-top:20px;
-    font-size:36px;
-}
-
-.description{
-    margin-top:20px;
-    line-height:1.6;
-    font-size:18px;
-}
-
-.highlight{
-    font-weight:bold;
-}
-
-.gallery{
-    margin-top:30px;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:15px;
-}
-
-.gallery img{
-    width:100%;
-    border-radius:6px;
-}
-
-.print-button{
-    position:fixed;
-    top:20px;
-    right:20px;
-    background:#222;
-    color:white;
-    padding:12px 18px;
-    border:none;
-    border-radius:6px;
-    font-size:14px;
-    cursor:pointer;
-}
-
-.print-button:hover{
-    background:#444;
-}
-
-@media print{
-    .print-button{
-        display:none;
+  <style>
+    :root{
+      --bg:#f4f1eb;
+      --card:#ffffff;
+      --text:#1f1f1f;
+      --muted:#6b675f;
+      --accent:#3f5a40;
+      --accent-2:#7f8f62;
+      --line:#e5ded3;
+      --shadow:0 10px 30px rgba(0,0,0,.10);
+      --radius:20px;
+      --max:1180px;
     }
-}
-</style>
-</head>
 
+    *{box-sizing:border-box}
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, #faf7f1 0, #f4f1eb 45%, #efe8dd 100%);
+      color:var(--text);
+      line-height:1.55;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      backdrop-filter: blur(10px);
+      background:rgba(244,241,235,.86);
+      border-bottom:1px solid rgba(0,0,0,.06);
+    }
+
+    .topbar-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:12px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+
+    .brand-badge{
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:bold;
+      box-shadow:var(--shadow);
+      flex:0 0 auto;
+    }
+
+    .brand-text{
+      min-width:0;
+    }
+
+    .brand-text h1{
+      margin:0;
+      font-size:20px;
+      line-height:1.1;
+      letter-spacing:.3px;
+    }
+
+    .brand-text p{
+      margin:2px 0 0;
+      font-size:12px;
+      color:var(--muted);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .btn{
+      border:none;
+      border-radius:999px;
+      padding:11px 16px;
+      font-size:14px;
+      cursor:pointer;
+      transition:.2s ease;
+      box-shadow:0 6px 18px rgba(0,0,0,.08);
+    }
+
+    .btn-primary{
+      background:var(--accent);
+      color:#fff;
+    }
+
+    .btn-primary:hover{
+      background:#324a33;
+      transform:translateY(-1px);
+    }
+
+    .btn-secondary{
+      background:#fff;
+      color:#222;
+      border:1px solid var(--line);
+    }
+
+    .btn-secondary:hover{
+      background:#f8f6f2;
+      transform:translateY(-1px);
+    }
+
+    .page{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:22px 18px 60px;
+    }
+
+    .hero{
+      position:relative;
+      overflow:hidden;
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      background:#000;
+    }
+
+    .hero img{
+      width:100%;
+      height:min(68vw, 650px);
+      object-fit:cover;
+      opacity:.92;
+    }
+
+    .hero-overlay{
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(to top, rgba(0,0,0,.56) 0%, rgba(0,0,0,.10) 45%, rgba(0,0,0,.08) 100%);
+      display:flex;
+      align-items:flex-end;
+      padding:28px;
+    }
+
+    .hero-content{
+      color:#fff;
+      max-width:760px;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      font-size:12px;
+      letter-spacing:1.6px;
+      text-transform:uppercase;
+      background:rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.2);
+      padding:8px 12px;
+      border-radius:999px;
+      margin-bottom:14px;
+    }
+
+    .hero-content h2{
+      margin:0 0 8px;
+      font-size:clamp(28px, 5vw, 54px);
+      line-height:1.02;
+    }
+
+    .hero-content p{
+      margin:0;
+      font-size:clamp(15px, 2vw, 19px);
+      max-width:700px;
+      color:rgba(255,255,255,.94);
+    }
+
+    .summary-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:22px;
+      margin-top:24px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid rgba(0,0,0,.05);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .card.pad{
+      padding:24px;
+    }
+
+    .section-title{
+      margin:0 0 14px;
+      font-size:24px;
+      line-height:1.15;
+    }
+
+    .description p{
+      margin:0 0 14px;
+      font-size:17px;
+      color:#292929;
+    }
+
+    .description p:last-child{
+      margin-bottom:0;
+    }
+
+    .facts{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
+    .fact{
+      background:#f8f5ef;
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:14px;
+    }
+
+    .fact-label{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      color:var(--muted);
+      margin-bottom:6px;
+    }
+
+    .fact-value{
+      font-size:17px;
+      font-weight:bold;
+      line-height:1.25;
+    }
+
+    .highlight-band{
+      margin-top:22px;
+      background:linear-gradient(135deg,#405841,#5d744d);
+      color:#fff;
+      border-radius:24px;
+      padding:24px;
+      box-shadow:var(--shadow);
+    }
+
+    .highlight-band h3{
+      margin:0 0 14px;
+      font-size:24px;
+    }
+
+    .highlight-list{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:12px;
+    }
+
+    .highlight-item{
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.16);
+      border-radius:16px;
+      padding:14px;
+      font-size:15px;
+      line-height:1.35;
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+      margin-top:22px;
+    }
+
+    .feature-list{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px 14px;
+      margin-top:8px;
+    }
+
+    .feature{
+      padding:12px 14px;
+      background:#f8f5ef;
+      border:1px solid var(--line);
+      border-radius:14px;
+      font-size:15px;
+    }
+
+    .mini-gallery{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:12px;
+    }
+
+    .mini-gallery .shot{
+      aspect-ratio: 4 / 3;
+    }
+
+    .gallery-section{
+      margin-top:28px;
+    }
+
+    .gallery-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:16px;
+      margin-bottom:14px;
+    }
+
+    .gallery-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:14px;
+    }
+
+    .shot{
+      position:relative;
+      overflow:hidden;
+      border-radius:18px;
+      background:#ddd;
+      box-shadow:var(--shadow);
+      cursor:pointer;
+      min-height:220px;
+    }
+
+    .shot img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform .35s ease;
+    }
+
+    .shot:hover img{
+      transform:scale(1.03);
+    }
+
+    .shot .cap{
+      position:absolute;
+      left:12px;
+      right:12px;
+      bottom:12px;
+      padding:10px 12px;
+      border-radius:12px;
+      background:rgba(0,0,0,.48);
+      color:#fff;
+      font-size:13px;
+      line-height:1.25;
+      backdrop-filter: blur(6px);
+    }
+
+    .footer-note{
+      margin-top:28px;
+      background:#fff;
+      border-radius:20px;
+      padding:20px 22px;
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .footer-note strong{
+      color:#222;
+    }
+
+    .lightbox{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.88);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:3000;
+      padding:22px;
+    }
+
+    .lightbox.open{
+      display:flex;
+    }
+
+    .lightbox-inner{
+      position:relative;
+      max-width:1200px;
+      width:100%;
+      max-height:100%;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .lightbox img{
+      width:100%;
+      max-height:82vh;
+      object-fit:contain;
+      border-radius:14px;
+      background:#111;
+    }
+
+    .lightbox-caption{
+      color:#fff;
+      text-align:center;
+      font-size:14px;
+      opacity:.92;
+    }
+
+    .lightbox-close{
+      position:absolute;
+      right:0;
+      top:-8px;
+      transform:translateY(-100%);
+      background:#fff;
+      color:#000;
+      border:none;
+      border-radius:999px;
+      padding:10px 14px;
+      font-size:14px;
+      cursor:pointer;
+    }
+
+    @media (max-width: 980px){
+      .summary-grid,
+      .split{
+        grid-template-columns:1fr;
+      }
+
+      .gallery{
+        grid-template-columns:repeat(2, 1fr);
+      }
+
+      .highlight-list{
+        grid-template-columns:repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px){
+      .topbar-inner{
+        flex-direction:column;
+        align-items:stretch;
+      }
+
+      .actions{
+        width:100%;
+        justify-content:stretch;
+      }
+
+      .actions .btn{
+        flex:1 1 auto;
+      }
+
+      .page{
+        padding:16px 14px 40px;
+      }
+
+      .hero img{
+        height:62vw;
+        min-height:290px;
+      }
+
+      .hero-overlay{
+        padding:18px;
+      }
+
+      .brand-text h1{
+        font-size:18px;
+      }
+
+      .section-title{
+        font-size:22px;
+      }
+
+      .description p{
+        font-size:16px;
+      }
+
+      .facts{
+        grid-template-columns:1fr;
+      }
+
+      .feature-list{
+        grid-template-columns:1fr;
+      }
+
+      .highlight-list{
+        grid-template-columns:1fr;
+      }
+
+      .mini-gallery{
+        grid-template-columns:1fr;
+      }
+
+      .gallery{
+        grid-template-columns:1fr;
+      }
+
+      .shot{
+        min-height:240px;
+      }
+    }
+
+    @media print{
+      body{
+        background:#fff;
+      }
+
+      .topbar,
+      .btn,
+      .lightbox{
+        display:none !important;
+      }
+
+      .page{
+        max-width:100%;
+        padding:0;
+      }
+
+      .hero,
+      .card,
+      .highlight-band,
+      .shot,
+      .footer-note{
+        box-shadow:none;
+      }
+
+      .hero{
+        border-radius:0;
+      }
+
+      .hero img{
+        height:420px;
+      }
+
+      .gallery{
+        grid-template-columns:repeat(2, 1fr);
+      }
+
+      .shot{
+        min-height:180px;
+        break-inside:avoid;
+      }
+
+      .card,
+      .highlight-band,
+      .footer-note{
+        border:1px solid #ddd;
+      }
+    }
+  </style>
+</head>
 <body>
 
-<button class="print-button" onclick="window.print()">Save / Print PDF</button>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-badge">SM</div>
+        <div class="brand-text">
+          <h1>Sugar Mountain</h1>
+          <p>Private setting • Guest house • Shop • Land • Lifestyle</p>
+        </div>
+      </div>
 
-<div class="container">
+      <div class="actions">
+        <button class="btn btn-secondary" onclick="window.scrollTo({top:0,behavior:'smooth'})">Top</button>
+        <button class="btn btn-primary" onclick="window.print()">Save / Print PDF</button>
+      </div>
+    </div>
+  </div>
 
-<div class="hero">
-<img src="HouseAndPit.jpg">
-</div>
+  <main class="page">
 
-<h1>Sugar Mountain</h1>
+    <section class="hero">
+      <img src="HouseAndPit.jpg" alt="Sugar Mountain main home and outdoor setting" />
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <div class="eyebrow">Private Property Presentation</div>
+          <h2>Sugar Mountain</h2>
+          <p>
+            Comfortable main home, detached guest house with shop, and a setting built around land, privacy, and usable improvements.
+          </p>
+        </div>
+      </div>
+    </section>
 
-<div class="description">
+    <section class="summary-grid">
+      <div class="card pad description">
+        <h3 class="section-title">Property Description</h3>
 
-<p>
-1 bed, 1 bath home (1,386 sq ft) set in a private, quiet location where the true value lies in the land and improvements.
-</p>
+        <p>
+          1 bed, 1 bath home (1,386 sq ft) set in a private, quiet location where the true value lies in the land and improvements.
+        </p>
 
-<p>
-Property includes a <span class="highlight">detached guest house with shop</span>, offering strong potential for Airbnb, rental income, workspace, or extended living. Additional features include a greenhouse, chicken coop, and large fenced garden area ready for homesteading or hobby use.
-</p>
+        <p>
+          Property includes a <strong>detached guest house with shop</strong>, offering strong potential for Airbnb, rental income, workspace, or extended living. Additional features include a greenhouse, chicken coop, and large fenced garden area ready for homesteading or hobby use.
+        </p>
 
-<p>
-A <span class="highlight">four-season screened porch</span> provides additional living space and is not included in the recorded square footage. Just beyond, a fire pit sits beside a wet-weather creek, creating a natural gathering area surrounded by mature trees and rolling terrain.
-</p>
+        <p>
+          A <strong>four-season screened porch</strong> provides additional living space and is not included in the recorded square footage. Just beyond, a fire pit sits beside a wet-weather creek, creating a natural gathering area surrounded by mature trees and rolling terrain.
+        </p>
 
-<p>
-Secluded, usable, and comfortable as it sits — suited for full-time living, weekend retreat use, or income potential.
-</p>
+        <p>
+          Secluded, usable, and comfortable as it sits — suited for full-time living, weekend retreat use, or income potential.
+        </p>
 
-<p class="highlight">
-Offered AS-IS and listed below recent appraisal.<br>
-3% offered to buyer’s agent.
-</p>
+        <p>
+          <strong>Offered AS-IS and listed below recent appraisal.</strong><br>
+          <strong>3% offered to buyer’s agent.</strong>
+        </p>
+      </div>
 
-</div>
+      <div class="card pad">
+        <h3 class="section-title">Quick Facts</h3>
+        <div class="facts">
+          <div class="fact">
+            <div class="fact-label">Main Home</div>
+            <div class="fact-value">1 Bed / 1 Bath</div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">Square Footage</div>
+            <div class="fact-value">1,386 Sq Ft</div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">Guest House</div>
+            <div class="fact-value">Detached</div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">Shop Space</div>
+            <div class="fact-value">Included</div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">Outdoor Living</div>
+            <div class="fact-value">Screened Porch + Fire Pit</div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">Property Feel</div>
+            <div class="fact-value">Private • Quiet • Comfortable</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="gallery">
+    <section class="highlight-band">
+      <h3>Why this property stands out</h3>
+      <div class="highlight-list">
+        <div class="highlight-item">Detached guest house for Airbnb, guests, or extended living</div>
+        <div class="highlight-item">Shop building plus useful outdoor improvements already in place</div>
+        <div class="highlight-item">Greenhouse, chicken coop, and large fenced garden area</div>
+        <div class="highlight-item">Fire pit beside a wet-weather creek in a private wooded setting</div>
+      </div>
+    </section>
 
-<img src="ShopAndGuestHouse.jpg">
-<img src="ShopAndGarden.jpg">
-<img src="BackLawn.jpg">
-<img src="ScreenPorch.jpg">
-<img src="ScreenPorch2.jpg">
-<img src="Kitchen.jpg">
-<img src="Kitchen2.jpg">
-<img src="Kitchen3.jpg">
-<img src="Dining.jpg">
-<img src="Living.jpg">
-<img src="Living2.jpg">
-<img src="Bedroom2.jpg">
-<img src="Bath.jpg">
-<img src="Laundry.jpg">
-<img src="GuestHouseBed.jpg">
-<img src="GuestHouseLiving.jpg">
-<img src="GuestHouseBath.jpg">
-<img src="Greenhouse.jpg">
-<img src="GuestHouseBalcony.jpg">
+    <section class="split">
+      <div class="card pad">
+        <h3 class="section-title">Property Highlights</h3>
+        <div class="feature-list">
+          <div class="feature">Detached guest house</div>
+          <div class="feature">Shop / workspace</div>
+          <div class="feature">Airbnb or rental potential</div>
+          <div class="feature">Four-season screened porch</div>
+          <div class="feature">Greenhouse</div>
+          <div class="feature">Chicken coop</div>
+          <div class="feature">Large fenced garden</div>
+          <div class="feature">Fire pit area</div>
+          <div class="feature">Wet-weather creek</div>
+          <div class="feature">Open lawn and rolling terrain</div>
+          <div class="feature">Private, quiet setting</div>
+          <div class="feature">Listed below recent appraisal</div>
+        </div>
+      </div>
 
-</div>
+      <div class="card pad">
+        <h3 class="section-title">Featured Views</h3>
+        <div class="mini-gallery">
+          <div class="shot" onclick="openLightbox('BirdsEye4.jpg','Aerial view of the surrounding valley and setting')">
+            <img src="BirdsEye4.jpg" alt="Aerial mountain and valley view" />
+            <div class="cap">Valley and ridge views</div>
+          </div>
+          <div class="shot" onclick="openLightbox('GuestHouseAndGarden.jpg','Guest house, greenhouse, and fenced garden area')">
+            <img src="GuestHouseAndGarden.jpg" alt="Guest house and garden area" />
+            <div class="cap">Guest house + garden area</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-</div>
+    <section class="gallery-section">
+      <div class="gallery-head">
+        <div>
+          <h3 class="section-title" style="margin-bottom:4px;">Photo Tour</h3>
+          <p>Tap or click any photo to enlarge.</p>
+        </div>
+      </div>
+
+      <div class="gallery">
+
+        <div class="shot" onclick="openLightbox('ShopAndGarden2.jpg','Shop, greenhouse, and approach')">
+          <img src="ShopAndGarden2.jpg" alt="Shop and greenhouse view" />
+          <div class="cap">Shop, greenhouse, and approach</div>
+        </div>
+
+        <div class="shot" onclick="openLightbox('Shop.jpg','Interior of the shop space')">
+          <img src="Shop.jpg" alt="Interior of shop" />
+          <div class="cap">Inside the shop</div>
+        </div>
+
+        <div class="shot" onclick="openLightbox('Pic1.jpg','Wide exterior shot of guest house, greenhouse, and drive')">
+          <img src="Pic1.jpg" alt="Wide exterior property shot" />
+          <div class="cap">Wide exterior view</div>
+        </div>
+
+        <div class="shot" onclick="openLightbox('FrontLawn.jpg','Front lawn and main home setting')">
+          <img src="FrontLawn.jpg" alt="Front lawn and main house" />
+          <div class="cap">Main home from the lawn</div>
+        </div>
+
+        <div class="shot" onclick="openLightbox('BackPatio.jpg','Rear and side perspective of the home')">
+          <img src="BackPatio.jpg" alt="Side and rear exterior view" />
+          <div class="cap">Side / rear exterior</div>
+        </div>
+
+        <div class="shot" onclick="openLightbox('Bedroom.jpg','Primary sleeping area')">
+          <img src="Bedroom.jpg" alt="Bedroom" />
+          <div class="cap">Bedroom</div>
+        </div>
+
+        <div class="shot" onclick="openLightbox('Bath.jpg','Bath and utility area')">
+          <img src="Bath.jpg" alt="Bathroom" />
+          <div class="cap">Bath / utility space</div>
+        </div>
+
+        <div class="shot" onclick="openLightbox('Dining.jpg','Dining area near screened porch')">
+          <img src="Dining.jpg" alt="Dining area" />
+          <div class="cap">Dining area</div>
+        </div>
+
+        <div class="shot" onclick="openLightbox('Kitchen3.jpg','Kitchen with warm wood finishes')">
+          <img src="Kitchen3.jpg" alt="Kitchen" />
+          <div class="cap">Kitchen</div>
+        </div>
+
+        <div class="shot" onclick="openLightbox('Laundry.jpg','Laundry / flex area')">
+          <img src="Laundry.jpg" alt="Laundry area" />
+          <div class="cap">Laundry area</div>
+        </div>
+
+        <div class="shot" onclick="openLightbox('Living.jpg','Main living room')">
+          <img src="Living.jpg" alt="Living room" />
+          <div class="cap">Living room</div>
+        </div>
+
+        <div class="shot" onclick="openLightbox('ScreenPorch2.jpg','Four-season screened porch')">
+          <img src="ScreenPorch2.jpg" alt="Four-season screened porch" />
+          <div class="cap">Four-season screened porch</div>
+        </div>
+
+        <div class="shot" onclick="openLightbox('GuestHouseBed.jpg','Detached guest house sleeping area')">
+          <img src="GuestHouseBed.jpg" alt="Guest house bed area" />
+          <div class="cap">Guest house interior</div>
+        </div>
+
+        <div class="shot" onclick="openLightbox('GuestHouseLiving2.jpg','Guest house living area')">
+          <img src="GuestHouseLiving2.jpg" alt="Guest house living area" />
+          <div class="cap">Guest house living space</div>
+        </div>
+
+        <div class="shot" onclick="openLightbox('GuestHouseBath.jpg','Guest house bath')">
+          <img src="GuestHouseBath.jpg" alt="Guest house bathroom" />
+          <div class="cap">Guest house bath</div>
+        </div>
+
+        <div class="shot" onclick="openLightbox('GuestHouseBalcony.jpg','View from the guest house balcony')">
+          <img src="GuestHouseBalcony.jpg" alt="Guest house balcony view" />
+          <div class="cap">Guest house balcony view</div>
+        </div>
+
+        <div class="shot" onclick="openLightbox('GuestHouseAndGarden.jpg','Guest house with fenced garden and greenhouse')">
+          <img src="GuestHouseAndGarden.jpg" alt="Guest house and fenced garden" />
+          <div class="cap">Guest house + fenced garden</div>
+        </div>
+
+        <div class="shot" onclick="openLightbox('Greenhouse.jpg','Greenhouse and growing area')">
+          <img src="Greenhouse.jpg" alt="Greenhouse" />
+          <div class="cap">Greenhouse</div>
+        </div>
+
+        <div class="shot" onclick="openLightbox('FirePit.jpg','Fire pit near the creek')">
+          <img src="FirePit.jpg" alt="Fire pit area" />
+          <div class="cap">Fire pit near the creek</div>
+        </div>
+
+        <div class="shot" onclick="openLightbox('PitAndHouse2.jpg','Fire pit and home from below')">
+          <img src="PitAndHouse2.jpg" alt="Fire pit and home" />
+          <div class="cap">Fire pit and home</div>
+        </div>
+
+        <div class="shot" onclick="openLightbox('BackLawn2.jpg','Open lawn and guest house side')">
+          <img src="BackLawn2.jpg" alt="Open lawn view" />
+          <div class="cap">Open lawn and improvements</div>
+        </div>
+
+        <div class="shot" onclick="openLightbox('BirdsEye.jpg','Aerial of the property layout')">
+          <img src="BirdsEye.jpg" alt="Aerial layout view" />
+          <div class="cap">Aerial layout</div>
+        </div>
+
+        <div class="shot" onclick="openLightbox('BirdsEye2.jpg','Aerial showing the broader setting')">
+          <img src="BirdsEye2.jpg" alt="Aerial property setting" />
+          <div class="cap">Broader aerial setting</div>
+        </div>
+
+        <div class="shot" onclick="openLightbox('BirdsEye3.jpg','Overhead view of drive and homesite')">
+          <img src="BirdsEye3.jpg" alt="Overhead view of drive" />
+          <div class="cap">Overhead drive view</div>
+        </div>
+
+        <div class="shot" onclick="openLightbox('BirdsEye4.jpg','Long-range valley and ridge view')">
+          <img src="BirdsEye4.jpg" alt="Long range aerial valley view" />
+          <div class="cap">Valley and ridge view</div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="footer-note">
+      <strong>Recommendation:</strong> once the public listing is live, add a QR code and agent contact block near the top. That turns this page into both a web flyer and a clean printable PDF handout without having to maintain two separate versions.
+    </div>
+
+  </main>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" onclick="forceCloseLightbox()">Close</button>
+      <img id="lightboxImage" src="" alt="" />
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <script>
+    function openLightbox(src, caption){
+      document.getElementById('lightboxImage').src = src;
+      document.getElementById('lightboxCaption').textContent = caption || '';
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function forceCloseLightbox(){
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function closeLightbox(event){
+      if(event.target.id === 'lightbox'){
+        forceCloseLightbox();
+      }
+    }
+
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){
+        forceCloseLightbox();
+      }
+    });
+  </script>
 
 </body>
 </html>
