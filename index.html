@@ -21,9 +21,7 @@
 
     *{box-sizing:border-box}
 
-    html{
-      scroll-behavior:smooth;
-    }
+    html{scroll-behavior:smooth}
 
     body{
       margin:0;
@@ -788,15 +786,13 @@
         </div>
 
         <div class="qr-wrap">
-          <a class="qr-link" href="https://www.zillow.com/" target="_blank" rel="noopener noreferrer" title="Open Zillow listing">
-            <img src="zillow-qr-placeholder.png" alt="Zillow QR code placeholder" />
+          <a class="qr-link" href="https://www.zillow.com/homedetails/14211-Sugar-Mountain-Rd-West-Fork-AR-72774/444916958_zpid/" target="_blank" rel="noopener noreferrer" title="Open Zillow listing">
+            <img src="zillow-qr-placeholder.png" alt="Zillow QR code" />
           </a>
           <div class="qr-meta">
             <h4>Zillow Listing</h4>
-            <p>
-              Replace the placeholder QR image and Zillow link with the live property URL when ready.
-            </p>
-            <a class="btn btn-primary" href="https://www.zillow.com/" target="_blank" rel="noopener noreferrer">Open Zillow Listing</a>
+            <p>Scan the QR code or tap below to open the Zillow listing.</p>
+            <a class="btn btn-primary" href="https://www.zillow.com/homedetails/14211-Sugar-Mountain-Rd-West-Fork-AR-72774/444916958_zpid/" target="_blank" rel="noopener noreferrer">Open Zillow Listing</a>
           </div>
         </div>
       </div>
@@ -839,24 +835,24 @@
           <button class="carousel-btn next" type="button" onclick="moveCarousel(1)">›</button>
 
           <div class="carousel-track" id="carouselTrack">
-            <div class="carousel-slide" onclick="openLightbox('BirdsEye4.jpg','Aerial view of the surrounding valley and setting')">
-              <img src="BirdsEye4.jpg" alt="Aerial valley and ridge view" />
-              <div class="carousel-caption">Valley and ridge views</div>
+            <div class="carousel-slide" onclick="openLightboxFromFile('BirdsEye4.jpg')">
+              <img src="BirdsEye4.jpg" alt="BirdsEye4" />
+              <div class="carousel-caption">BirdsEye4</div>
             </div>
 
-            <div class="carousel-slide" onclick="openLightbox('GuestHouseAndGarden.jpg','Guest house, greenhouse, and fenced garden area')">
-              <img src="GuestHouseAndGarden.jpg" alt="Guest house and garden area" />
-              <div class="carousel-caption">Guest house + garden area</div>
+            <div class="carousel-slide" onclick="openLightboxFromFile('GuestHouseAndGarden.jpg')">
+              <img src="GuestHouseAndGarden.jpg" alt="GuestHouseAndGarden" />
+              <div class="carousel-caption">GuestHouseAndGarden</div>
             </div>
 
-            <div class="carousel-slide" onclick="openLightbox('BirdsEye2.jpg','Aerial showing the broader property setting')">
-              <img src="BirdsEye2.jpg" alt="Aerial property setting" />
-              <div class="carousel-caption">Broader property setting</div>
+            <div class="carousel-slide" onclick="openLightboxFromFile('BirdsEye2.jpg')">
+              <img src="BirdsEye2.jpg" alt="BirdsEye2" />
+              <div class="carousel-caption">BirdsEye2</div>
             </div>
 
-            <div class="carousel-slide" onclick="openLightbox('FirePit.jpg','Fire pit near the creek and outdoor gathering area')">
-              <img src="FirePit.jpg" alt="Fire pit area" />
-              <div class="carousel-caption">Fire pit near the creek</div>
+            <div class="carousel-slide" onclick="openLightboxFromFile('FirePit.jpg')">
+              <img src="FirePit.jpg" alt="FirePit" />
+              <div class="carousel-caption">FirePit</div>
             </div>
           </div>
         </div>
@@ -880,129 +876,129 @@
 
       <div class="gallery">
 
-        <div class="shot" onclick="openLightbox('ShopAndGarden2.jpg','Shop, greenhouse, and approach')">
-          <img src="ShopAndGarden2.jpg" alt="Shop and greenhouse view" />
-          <div class="cap">Shop, greenhouse, and approach</div>
+        <div class="shot gallery-item" data-file="ShopAndGarden2.jpg" onclick="openLightboxFromFile('ShopAndGarden2.jpg')">
+          <img src="ShopAndGarden2.jpg" alt="ShopAndGarden2" />
+          <div class="cap"></div>
         </div>
 
-        <div class="shot" onclick="openLightbox('Shop.jpg','Interior of the shop space')">
-          <img src="Shop.jpg" alt="Interior of shop" />
-          <div class="cap">Inside the shop</div>
+        <div class="shot gallery-item" data-file="Shop.jpg" onclick="openLightboxFromFile('Shop.jpg')">
+          <img src="Shop.jpg" alt="Shop" />
+          <div class="cap"></div>
         </div>
 
-        <div class="shot" onclick="openLightbox('Pic1.jpg','Wide exterior shot of guest house, greenhouse, and drive')">
-          <img src="Pic1.jpg" alt="Wide exterior property shot" />
-          <div class="cap">Wide exterior view</div>
+        <div class="shot gallery-item" data-file="Pic1.jpg" onclick="openLightboxFromFile('Pic1.jpg')">
+          <img src="Pic1.jpg" alt="Pic1" />
+          <div class="cap"></div>
         </div>
 
-        <div class="shot" onclick="openLightbox('FrontLawn.jpg','Front lawn and main home setting')">
-          <img src="FrontLawn.jpg" alt="Front lawn and main house" />
-          <div class="cap">Main home from the lawn</div>
+        <div class="shot gallery-item" data-file="FrontLawn.jpg" onclick="openLightboxFromFile('FrontLawn.jpg')">
+          <img src="FrontLawn.jpg" alt="FrontLawn" />
+          <div class="cap"></div>
         </div>
 
-        <div class="shot" onclick="openLightbox('BackPatio.jpg','Rear and side perspective of the home')">
-          <img src="BackPatio.jpg" alt="Side and rear exterior view" />
-          <div class="cap">Side / rear exterior</div>
+        <div class="shot gallery-item" data-file="BackPatio.jpg" onclick="openLightboxFromFile('BackPatio.jpg')">
+          <img src="BackPatio.jpg" alt="BackPatio" />
+          <div class="cap"></div>
         </div>
 
-        <div class="shot" onclick="openLightbox('Bedroom.jpg','Primary sleeping area')">
+        <div class="shot gallery-item" data-file="Bedroom.jpg" onclick="openLightboxFromFile('Bedroom.jpg')">
           <img src="Bedroom.jpg" alt="Bedroom" />
-          <div class="cap">Bedroom</div>
+          <div class="cap"></div>
         </div>
 
-        <div class="shot" onclick="openLightbox('Bath.jpg','Bath and utility area')">
-          <img src="Bath.jpg" alt="Bathroom" />
-          <div class="cap">Bath / utility space</div>
+        <div class="shot gallery-item" data-file="Bath.jpg" onclick="openLightboxFromFile('Bath.jpg')">
+          <img src="Bath.jpg" alt="Bath" />
+          <div class="cap"></div>
         </div>
 
-        <div class="shot" onclick="openLightbox('Dining.jpg','Dining area near screened porch')">
-          <img src="Dining.jpg" alt="Dining area" />
-          <div class="cap">Dining area</div>
+        <div class="shot gallery-item" data-file="Dining.jpg" onclick="openLightboxFromFile('Dining.jpg')">
+          <img src="Dining.jpg" alt="Dining" />
+          <div class="cap"></div>
         </div>
 
-        <div class="shot" onclick="openLightbox('Kitchen3.jpg','Kitchen with warm wood finishes')">
-          <img src="Kitchen3.jpg" alt="Kitchen" />
-          <div class="cap">Kitchen</div>
+        <div class="shot gallery-item" data-file="Kitchen3.jpg" onclick="openLightboxFromFile('Kitchen3.jpg')">
+          <img src="Kitchen3.jpg" alt="Kitchen3" />
+          <div class="cap"></div>
         </div>
 
-        <div class="shot" onclick="openLightbox('Laundry.jpg','Laundry / flex area')">
-          <img src="Laundry.jpg" alt="Laundry area" />
-          <div class="cap">Laundry area</div>
+        <div class="shot gallery-item" data-file="Laundry.jpg" onclick="openLightboxFromFile('Laundry.jpg')">
+          <img src="Laundry.jpg" alt="Laundry" />
+          <div class="cap"></div>
         </div>
 
-        <div class="shot" onclick="openLightbox('Living.jpg','Main living room')">
-          <img src="Living.jpg" alt="Living room" />
-          <div class="cap">Living room</div>
+        <div class="shot gallery-item" data-file="Living.jpg" onclick="openLightboxFromFile('Living.jpg')">
+          <img src="Living.jpg" alt="Living" />
+          <div class="cap"></div>
         </div>
 
-        <div class="shot" onclick="openLightbox('ScreenPorch2.jpg','Four-season screened porch')">
-          <img src="ScreenPorch2.jpg" alt="Four-season screened porch" />
-          <div class="cap">Four-season screened porch</div>
+        <div class="shot gallery-item" data-file="ScreenPorch2.jpg" onclick="openLightboxFromFile('ScreenPorch2.jpg')">
+          <img src="ScreenPorch2.jpg" alt="ScreenPorch2" />
+          <div class="cap"></div>
         </div>
 
-        <div class="shot" onclick="openLightbox('GuestHouseBed.jpg','Detached guest house sleeping area')">
-          <img src="GuestHouseBed.jpg" alt="Guest house bed area" />
-          <div class="cap">Guest house interior</div>
+        <div class="shot gallery-item" data-file="GuestHouseBed.jpg" onclick="openLightboxFromFile('GuestHouseBed.jpg')">
+          <img src="GuestHouseBed.jpg" alt="GuestHouseBed" />
+          <div class="cap"></div>
         </div>
 
-        <div class="shot" onclick="openLightbox('GuestHouseLiving2.jpg','Guest house living area')">
-          <img src="GuestHouseLiving2.jpg" alt="Guest house living area" />
-          <div class="cap">Guest house living space</div>
+        <div class="shot gallery-item" data-file="GuestHouseLiving2.jpg" onclick="openLightboxFromFile('GuestHouseLiving2.jpg')">
+          <img src="GuestHouseLiving2.jpg" alt="GuestHouseLiving2" />
+          <div class="cap"></div>
         </div>
 
-        <div class="shot" onclick="openLightbox('GuestHouseBath.jpg','Guest house bath')">
-          <img src="GuestHouseBath.jpg" alt="Guest house bathroom" />
-          <div class="cap">Guest house bath</div>
+        <div class="shot gallery-item" data-file="GuestHouseBath.jpg" onclick="openLightboxFromFile('GuestHouseBath.jpg')">
+          <img src="GuestHouseBath.jpg" alt="GuestHouseBath" />
+          <div class="cap"></div>
         </div>
 
-        <div class="shot" onclick="openLightbox('GuestHouseBalcony.jpg','View from the guest house balcony')">
-          <img src="GuestHouseBalcony.jpg" alt="Guest house balcony view" />
-          <div class="cap">Guest house balcony view</div>
+        <div class="shot gallery-item" data-file="GuestHouseBalcony.jpg" onclick="openLightboxFromFile('GuestHouseBalcony.jpg')">
+          <img src="GuestHouseBalcony.jpg" alt="GuestHouseBalcony" />
+          <div class="cap"></div>
         </div>
 
-        <div class="shot" onclick="openLightbox('GuestHouseAndGarden.jpg','Guest house with fenced garden and greenhouse')">
-          <img src="GuestHouseAndGarden.jpg" alt="Guest house and fenced garden" />
-          <div class="cap">Guest house + fenced garden</div>
+        <div class="shot gallery-item" data-file="GuestHouseAndGarden.jpg" onclick="openLightboxFromFile('GuestHouseAndGarden.jpg')">
+          <img src="GuestHouseAndGarden.jpg" alt="GuestHouseAndGarden" />
+          <div class="cap"></div>
         </div>
 
-        <div class="shot" onclick="openLightbox('Greenhouse.jpg','Greenhouse and growing area')">
+        <div class="shot gallery-item" data-file="Greenhouse.jpg" onclick="openLightboxFromFile('Greenhouse.jpg')">
           <img src="Greenhouse.jpg" alt="Greenhouse" />
-          <div class="cap">Greenhouse</div>
+          <div class="cap"></div>
         </div>
 
-        <div class="shot" onclick="openLightbox('FirePit.jpg','Fire pit near the creek')">
-          <img src="FirePit.jpg" alt="Fire pit area" />
-          <div class="cap">Fire pit near the creek</div>
+        <div class="shot gallery-item" data-file="FirePit.jpg" onclick="openLightboxFromFile('FirePit.jpg')">
+          <img src="FirePit.jpg" alt="FirePit" />
+          <div class="cap"></div>
         </div>
 
-        <div class="shot" onclick="openLightbox('PitAndHouse2.jpg','Fire pit and home from below')">
-          <img src="PitAndHouse2.jpg" alt="Fire pit and home" />
-          <div class="cap">Fire pit and home</div>
+        <div class="shot gallery-item" data-file="PitAndHouse2.jpg" onclick="openLightboxFromFile('PitAndHouse2.jpg')">
+          <img src="PitAndHouse2.jpg" alt="PitAndHouse2" />
+          <div class="cap"></div>
         </div>
 
-        <div class="shot" onclick="openLightbox('BackLawn2.jpg','Open lawn and guest house side')">
-          <img src="BackLawn2.jpg" alt="Open lawn view" />
-          <div class="cap">Open lawn and improvements</div>
+        <div class="shot gallery-item" data-file="BackLawn2.jpg" onclick="openLightboxFromFile('BackLawn2.jpg')">
+          <img src="BackLawn2.jpg" alt="BackLawn2" />
+          <div class="cap"></div>
         </div>
 
-        <div class="shot" onclick="openLightbox('BirdsEye.jpg','Aerial of the property layout')">
-          <img src="BirdsEye.jpg" alt="Aerial layout view" />
-          <div class="cap">Aerial layout</div>
+        <div class="shot gallery-item" data-file="BirdsEye.jpg" onclick="openLightboxFromFile('BirdsEye.jpg')">
+          <img src="BirdsEye.jpg" alt="BirdsEye" />
+          <div class="cap"></div>
         </div>
 
-        <div class="shot" onclick="openLightbox('BirdsEye2.jpg','Aerial showing the broader setting')">
-          <img src="BirdsEye2.jpg" alt="Aerial property setting" />
-          <div class="cap">Broader aerial setting</div>
+        <div class="shot gallery-item" data-file="BirdsEye2.jpg" onclick="openLightboxFromFile('BirdsEye2.jpg')">
+          <img src="BirdsEye2.jpg" alt="BirdsEye2" />
+          <div class="cap"></div>
         </div>
 
-        <div class="shot" onclick="openLightbox('BirdsEye3.jpg','Overhead view of drive and homesite')">
-          <img src="BirdsEye3.jpg" alt="Overhead view of drive" />
-          <div class="cap">Overhead drive view</div>
+        <div class="shot gallery-item" data-file="BirdsEye3.jpg" onclick="openLightboxFromFile('BirdsEye3.jpg')">
+          <img src="BirdsEye3.jpg" alt="BirdsEye3" />
+          <div class="cap"></div>
         </div>
 
-        <div class="shot" onclick="openLightbox('BirdsEye4.jpg','Long-range valley and ridge view')">
-          <img src="BirdsEye4.jpg" alt="Long range aerial valley view" />
-          <div class="cap">Valley and ridge view</div>
+        <div class="shot gallery-item" data-file="BirdsEye4.jpg" onclick="openLightboxFromFile('BirdsEye4.jpg')">
+          <img src="BirdsEye4.jpg" alt="BirdsEye4" />
+          <div class="cap"></div>
         </div>
 
       </div>
@@ -1019,11 +1015,19 @@
   </div>
 
   <script>
+    function labelFromFile(filename){
+      return filename.replace(/\.[^.]+$/, '');
+    }
+
     function openLightbox(src, caption){
       document.getElementById('lightboxImage').src = src;
       document.getElementById('lightboxCaption').textContent = caption || '';
       document.getElementById('lightbox').classList.add('open');
       document.body.style.overflow = 'hidden';
+    }
+
+    function openLightboxFromFile(filename){
+      openLightbox(filename, labelFromFile(filename));
     }
 
     function forceCloseLightbox(){
@@ -1040,6 +1044,14 @@
     document.addEventListener('keydown', function(e){
       if(e.key === 'Escape'){
         forceCloseLightbox();
+      }
+    });
+
+    document.querySelectorAll('.gallery-item').forEach(function(item){
+      const filename = item.getAttribute('data-file');
+      const cap = item.querySelector('.cap');
+      if(cap && filename){
+        cap.textContent = labelFromFile(filename);
       }
     });
 
